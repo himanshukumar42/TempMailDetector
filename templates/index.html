@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <link rel="stylesheet" type="text/css" href="static/css/main.css">
+
+  <title>Home</title>
+</head>
+
+<body>
+
+
+  <div class="containers">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <a class="navbar-brand" href="#">Email Checker</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              APIs
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Bulk Email Checker API</a>
+              <a class="dropdown-item" href="#">MX Records API</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Disposable Email List API</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact Us</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+    <div class="alert alert-success" role="alert">
+      Note: We do not share email address(submitted for validation) with anyone. feel free to use the tool.
+    </div>
+
+
+
+    <main role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">Email Checker</h1>
+          <p>Email Checker is a simple little tool for verifying an email address. It's free and quite easy to use. Just
+            enter the email address and hit the check button. It tells you whether the email id is real or fake.
+            Sometimes, it’s unable to correctly predict and say unknown because some email providers have put some
+            limits and restrictions or they simply don’t like any verification checks on their mailboxes.
+
+          </p>
+          <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+        </div>
+      </div>
+
+      <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="col-md-6">
+            <h2>Check Email Address</h2>
+            <div class="email_form">
+              <form method="post" action="/check">
+                <input class="input_email" type="text" name="email" placeholder="name@example.com">
+                <input class="input_submit .bg-primary" type="submit" value="Check">
+              </form>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h2>Result:</h2>
+            {% if data %}
+              {% if is_valid %}
+                <h3 style="color:green;">OK</h3>
+                <p>{{ data.is_valid }}</p>
+                <p>The email address is valid.</p>
+              {% else %}
+                <h3 style="color:red;">BAD</h3>
+                <p>{{ data.is_valid }}</p>
+                <p>The email address is invalid</p>
+              {% endif %}
+            {% endif %}
+          </div>
+        </div>
+
+        <hr>
+
+      </div> <!-- /container -->
+
+    </main>
+
+    <div class="container">
+      <div class="para">
+        <h2>How do we verify an email?</h2>
+        <div class="description">
+          <p>
+          <ul>
+            <li>First it checks for email address format </li>
+            <li>Then It checks to make sure that the domain name is valid</li>
+            <li>Then it checks if the domain is a disposable domain or not</li>
+            <li>In the final step. It extracts the MX records from the domain records and connect to the email server (over SMTP and also simulates sending a message) to make sure the mailbox really exists for that user/address. Some mail servers do not cooperate in the process, in such cases, the result of this email verification tool may not be as accurate as expected.</li>
+          </ul>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="suggestion">
+    <h3>Help us to improve this site</h3>
+    <p>If you have any suggestion/idea for improving this website or adding new feature or something, feel free to email us.</p>
+  </div>
+  </div>
+
+
+  <div class="container">
+  <footer class="py-3 my-4">
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+    </ul>
+    <p class="text-center text-muted">&copy; 2021 Company, Inc</p>
+  </footer>
+</div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
